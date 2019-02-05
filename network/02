@@ -1,0 +1,2 @@
+a) ifconfig | grep "broadcast" | cut -c 47-
+b) ipconfig getifaddr en0
