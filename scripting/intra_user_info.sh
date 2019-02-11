@@ -31,7 +31,7 @@ echo $VALUE | grep -Po '"wallet":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d
 echo -n "Level: "
 echo $VALUE | grep -Po '"level":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d":" | cut -f1 -d"s"
 echo
-echo -n "Validated Piscine of "
+echo "Validated Piscine of "
 echo -n $VALUE | grep -Po '"pool_month":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 echo -n $VALUE | grep -Po '"pool_year":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 
