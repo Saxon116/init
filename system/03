@@ -1,0 +1,4 @@
+/etc/hostname
+
+This is where the hostname is stored, so you can rename
+the hostname here with root priviledges.

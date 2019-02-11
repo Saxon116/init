@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-TOKEN="5076e19da745a10a2284a6592305b407744584784338aa00e5e3a6bd3a7be978"
+TOKEN="00d263bff3cce25bf8e8817a29bfa603e4d68f25f9186ada5d65e6da86490680"
 
 VALUE=$(curl -sH "Authorization: Bearer $TOKEN" "https://api.intra.42.fr/v2/users/$1" | tr -d '{}')
 wallet="wallet"
@@ -12,7 +12,7 @@ if [ -z "$VALUE" ] || [ -z "$1" ]
 then
       echo "Incorrect username or no username specified."
       echo
-      echo "usage: ./apiscript.sh intra_username"
+      echo "usage: ./03 intra_username"
       exit 2
 fi
 

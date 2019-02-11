@@ -1,0 +1,4 @@
+cron is a service that lets you do this.
+
+watch -n x <your command> works as well for simple
+tasks.

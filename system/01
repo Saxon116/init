@@ -1,0 +1,6 @@
+System configurations are stored in /etc.
+
+Found a file named debian_version that contains
+the version information.
+
+/etc/debian_version
