@@ -1,41 +1,46 @@
 #!/bin/bash
 
 
-TOKEN="00d263bff3cce25bf8e8817a29bfa603e4d68f25f9186ada5d65e6da86490680"
+TOKENCALL=$(curl -sX POST --data "grant_type=client_credentials&client_id=05c45c4c5fdc8ac228bb68f5dee9f83ca84ca3d4fe3ab168483d1e4c28d8ca2e&client_secret=d564ea66f71f4fca77d1e169740a89bd036e750c7cb414a6428149885a2923c7" https://api.intra.42.fr/oauth/token)
+TOKEN=$(echo "$TOKENCALL" | grep -Eo '"access_token":.*?[^\\]",' | tr -d '",' | cut -f2 -d":")
+RANDOMNUM=$[$RANDOM % 420 + 1 | bc]
+USERINFO=$(curl -sH "Authorization: Bearer $TOKEN" "https://api.intra.42.fr/v2/users/$1" | tr -d '{}')
+USERLOGIN=$1
 
-VALUE=$(curl -sH "Authorization: Bearer $TOKEN" "https://api.intra.42.fr/v2/users/$1" | tr -d '{}')
-wallet="wallet"
-
-#curl -X POST --data "grant_type=client_credentials&client_id=05c45c4c5fdc8ac228bb68f5dee9f83ca84ca3d4fe3ab168483d1e4c28d8ca2e&client_secret=d564ea66f71f4fca77d1e169740a89bd036e750c7cb414a6428149885a2923c7" https://api.intra.42.fr/oauth/token
 echo
-if [ -z "$VALUE" ] || [ -z "$1" ]
+if [ -z "$USERINFO" ] || [ -z "$1" ]
 then
       echo "Incorrect username or no username specified."
       echo
       echo "usage: ./03 intra_username"
-      exit 2
+	  echo
+	  echo "RANDOM USER SELECTED"
+	  echo
+	  RANDOMUSER=$(curl -sH "Authorization: Bearer $TOKEN" "https://api.intra.42.fr/v2/cursus_users/$RANDOMNUM" | grep -Eo '"login":.*?[^\\]",' | tr -d '",' | cut -f2 -d":")
+	  sleep 1
+	  USERINFO=$(curl -sH "Authorization: Bearer $TOKEN" "https://api.intra.42.fr/v2/users/$RANDOMUSER")
+	  echo -n "Login: "
+	  echo $RANDOMUSER
+	  USERLOGIN=$RANDOMUSER
 fi
 
 echo -n "Name: "
-echo $VALUE | grep -Po '"displayname":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
+echo $USERINFO | grep -Eo '"displayname":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 echo -n "Email: "
-echo $VALUE | grep -Po '"email":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
+echo $USERINFO | grep -Eo '"email":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 echo -n "Phone number: "
-echo $VALUE | grep -Po '"phone":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
+echo $USERINFO | grep -Eo '"phone":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 echo -n "Location: "
-echo $VALUE | grep -Po '"location":.*?[^\\]",' | tr -d '",' | cut -f2 -d":" | sed -e "s/$wallet$//"
+echo $USERINFO | grep -Eo '"location":.*?[^\\]",' | tr -d '",' | cut -f2 -d":" | sed -e "s/wallet//"
 echo -n "Correction Points: "
-echo $VALUE | grep -Po '"correction_point":.*?[^\\]",' | tr -d '",' | grep -oP '(?<=:).*?(?=p)'
+echo $USERINFO | grep -Eo '"correction_point":.*?[^\\]",' | tr -d '",' | cut -f2 -d":" | cut -f1 -d"p" #| grep '(?<=:).*?(?=p)'
 echo -n "Wallet: "
-echo $VALUE | grep -Po '"wallet":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d":" | cut -f1 -d"g" | awk '{print $1"₳"}'
+echo $USERINFO | grep -Eo '"wallet":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d":" | cut -f1 -d"g" | awk '{print $1"₳"}'
 echo -n "Level: "
-echo $VALUE | grep -Po '"level":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d":" | cut -f1 -d"s"
+echo $USERINFO | grep -Eo '"level":.*?[^\\]",' | head -1 | tr -d '",' | cut -f2 -d":" | cut -f1 -d"s"
 echo
 echo "Validated Piscine of "
-echo -n $VALUE | grep -Po '"pool_month":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
-echo -n $VALUE | grep -Po '"pool_year":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
+echo -n $USERINFO | grep -Eo '"pool_month":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
+echo -n $USERINFO | grep -Eo '"pool_year":.*?[^\\]",' | tr -d '",' | cut -f2 -d":"
 
-python -mwebbrowser https://cdn.intra.42.fr/users/$1.jpg
-
-#$VALUE | grep -Po '"image_url":.*?[^\\]",' | tr -d '",' | cut -d: -f2-
-#grep -Po '"text":.*?[^\\]",'
+python -mwebbrowser https://cdn.intra.42.fr/users/$USERLOGIN.jpg
