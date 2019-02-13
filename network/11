@@ -1,0 +1,6 @@
+Using the last command traceroute, we can see the IP of the
+hardware connecting us to the bigger network.
+
+nat-1 (10.60.1.11)
+
+traceroute slash16.org | sed -n 2p

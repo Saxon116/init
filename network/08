@@ -1,1 +1,4 @@
-nslookup slash16.org | grep
+The slash16.org website is hosted by amazon.com.
+
+I used https://www.whoishostingthis.com to find the website's
+host.

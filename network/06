@@ -1,5 +1,4 @@
-Je sais que la plupart des données sur le network sont stockées
-dans /etc. A partir de la, j'ai cherché des fichiers .conf
-qui pourrait contenir l'address IP et j'ai trouvé:
+Most network data is found in /etc, so I looked for files that
+could contain the IP address and I found:
 
 /etc/resolv.conf

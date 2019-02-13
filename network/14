@@ -1,0 +1,4 @@
+Looking around online, I found that the local DNS entries are
+found in the /etc/hosts file.
+
+/etc/hosts
