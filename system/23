@@ -1,0 +1,3 @@
+We can use ssh username@ipaddress to login as that user. We can also log
+out of the current session, then login with the new username and password
+to connect to a new session.
