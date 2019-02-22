@@ -1,42 +1,42 @@
-UNIT                               LOAD   ACTIVE SUB     DESCRIPTION                                                                                               
-avahi-daemon.service               loaded active running Avahi mDNS/DNS-SD Stack                                                                                   
-console-setup.service              loaded active exited  Set console font and keymap                                                                               
-cron.service                       loaded active running Regular background program processing daemon                                                              
-dbus.service                       loaded active running D-Bus System Message Bus                                                                                  
-getty@tty1.service                 loaded active running Getty on tty1                                                                                             
-hddtemp.service                    loaded active exited  LSB: disk temperature monitoring daemon                                                                   
-keyboard-setup.service             loaded active exited  Set the console keyboard layout                                                                           
-kmod-static-nodes.service          loaded active exited  Create list of required static device nodes for the current kernel                                        
-lightdm.service                    loaded active running Light Display Manager                                                                                     
+UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
+avahi-daemon.service               loaded active running Avahi mDNS/DNS-SD Stack
+console-setup.service              loaded active exited  Set console font and keymap
+cron.service                       loaded active running Regular background program processing daemon
+dbus.service                       loaded active running D-Bus System Message Bus
+getty@tty1.service                 loaded active running Getty on tty1
+hddtemp.service                    loaded active exited  LSB: disk temperature monitoring daemon
+keyboard-setup.service             loaded active exited  Set the console keyboard layout
+kmod-static-nodes.service          loaded active exited  Create list of required static device nodes for the current kernel
+lightdm.service                    loaded active running Light Display Manager
 live-config.service                loaded active exited  live-config contains the components that configure a live system during the boot process (late userspace).
-live-tools.service                 loaded active exited  live-tools - System Support Scripts                                                                       
-lm-sensors.service                 loaded active exited  Initialize hardware monitoring sensors                                                                    
-ModemManager.service               loaded active running Modem Manager                                                                                             
-networking.service                 loaded active exited  Raise network interfaces                                                                                  
-NetworkManager-wait-online.service loaded active exited  Network Manager Wait Online                                                                               
-NetworkManager.service             loaded active running Network Manager                                                                                           
-packagekit.service                 loaded active running PackageKit Daemon                                                                                         
-polkit.service                     loaded active running Authorization Manager                                                                                     
-rsyslog.service                    loaded active running System Logging Service                                                                                    
-rtkit-daemon.service               loaded active running RealtimeKit Scheduling Policy Service                                                                     
-speech-dispatcher.service          loaded active exited  LSB: Speech Dispatcher                                                                                    
-systemd-journal-flush.service      loaded active exited  Flush Journal to Persistent Storage                                                                       
-systemd-journald.service           loaded active running Journal Service                                                                                           
-systemd-logind.service             loaded active running Login Service                                                                                             
-systemd-modules-load.service       loaded active exited  Load Kernel Modules                                                                                       
-systemd-random-seed.service        loaded active exited  Load/Save Random Seed                                                                                     
-systemd-remount-fs.service         loaded active exited  Remount Root and Kernel File Systems                                                                      
-systemd-sysctl.service             loaded active exited  Apply Kernel Variables                                                                                    
-systemd-timesyncd.service          loaded active running Network Time Synchronization                                                                              
-systemd-tmpfiles-setup-dev.service loaded active exited  Create Static Device Nodes in /dev                                                                        
-systemd-tmpfiles-setup.service     loaded active exited  Create Volatile Files and Directories                                                                     
-systemd-udev-trigger.service       loaded active exited  udev Coldplug all Devices                                                                                 
-systemd-udevd.service              loaded active running udev Kernel Device Manager                                                                                
-systemd-update-utmp.service        loaded active exited  Update UTMP about System Boot/Shutdown                                                                    
-systemd-user-sessions.service      loaded active exited  Permit User Sessions                                                                                      
-udisks2.service                    loaded active running Disk Manager                                                                                              
-upower.service                     loaded active running Daemon for power management                                                                               
-user@1000.service                  loaded active running User Manager for UID 1000                                                                                 
+live-tools.service                 loaded active exited  live-tools - System Support Scripts
+lm-sensors.service                 loaded active exited  Initialize hardware monitoring sensors
+ModemManager.service               loaded active running Modem Manager
+networking.service                 loaded active exited  Raise network interfaces
+NetworkManager-wait-online.service loaded active exited  Network Manager Wait Online
+NetworkManager.service             loaded active running Network Manager
+packagekit.service                 loaded active running PackageKit Daemon
+polkit.service                     loaded active running Authorization Manager
+rsyslog.service                    loaded active running System Logging Service
+rtkit-daemon.service               loaded active running RealtimeKit Scheduling Policy Service
+speech-dispatcher.service          loaded active exited  LSB: Speech Dispatcher
+systemd-journal-flush.service      loaded active exited  Flush Journal to Persistent Storage
+systemd-journald.service           loaded active running Journal Service
+systemd-logind.service             loaded active running Login Service
+systemd-modules-load.service       loaded active exited  Load Kernel Modules
+systemd-random-seed.service        loaded active exited  Load/Save Random Seed
+systemd-remount-fs.service         loaded active exited  Remount Root and Kernel File Systems
+systemd-sysctl.service             loaded active exited  Apply Kernel Variables
+systemd-timesyncd.service          loaded active running Network Time Synchronization
+systemd-tmpfiles-setup-dev.service loaded active exited  Create Static Device Nodes in /dev
+systemd-tmpfiles-setup.service     loaded active exited  Create Volatile Files and Directories
+systemd-udev-trigger.service       loaded active exited  udev Coldplug all Devices
+systemd-udevd.service              loaded active running udev Kernel Device Manager
+systemd-update-utmp.service        loaded active exited  Update UTMP about System Boot/Shutdown
+systemd-user-sessions.service      loaded active exited  Permit User Sessions
+udisks2.service                    loaded active running Disk Manager
+upower.service                     loaded active running Daemon for power management
+user@1000.service                  loaded active running User Manager for UID 1000
 
 LOAD   = Reflects whether the unit definition was properly loaded.
 ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
@@ -44,3 +44,6 @@ SUB    = The low-level unit activation state, values depend on unit type.
 
 38 loaded units listed. Pass --all to see loaded but inactive units, too.
 To show all installed unit files use 'systemctl list-unit-files'.
+
+
+A daemon.
