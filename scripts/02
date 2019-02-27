@@ -1,7 +1,12 @@
 #!/bin/bash
 
+if [ -z "$1" ]
+then
+    echo "user missing"
+    echo "usage: ./02 user"
+    exit
+fi
 mapfile -t my_array < <( awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd )
-declare -p my_array
 
 function contains() {
     local n=$#
