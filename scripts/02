@@ -2,3 +2,23 @@
 
 mapfile -t my_array < <( awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd )
 declare -p my_array
+
+function contains() {
+    local n=$#
+    local value=${!n}
+    for ((i=1;i < $#;i++)) {
+        if [ "${!i}" == "${value}" ]; then
+            echo "y"
+            return 0
+        fi
+    }
+    echo "n"
+    return 1
+}
+
+if [ $(contains "${my_array[@]}" $1) == "y" ]; then
+    echo "contains $1"
+else
+    echo "Does not contain $1"
+fi
+
