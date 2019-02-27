@@ -1,4 +1,3 @@
 The slash16.org website is hosted by amazon.com.
 
-I used https://www.whoishostingthis.com to find the website's
-host.
+Using the dig slash16.org command I found the DNS is stored on "aws", Amazon web service.

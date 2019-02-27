@@ -1,1 +1,5 @@
 sudo apt list --installed
+
+or
+
+dpkg -l
