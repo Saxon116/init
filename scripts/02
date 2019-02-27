@@ -2,7 +2,6 @@
 
 if [ -z "$1" ]
 then
-    echo "user missing"
     echo "usage: ./02 user"
     exit
 fi
@@ -21,9 +20,15 @@ function contains() {
     return 1
 }
 
-if [ $(contains "${my_array[@]}" $1) == "y" ]; then
-    echo "contains $1"
-else
-    echo "Does not contain $1"
+if [ $(contains "${my_array[@]}" $1) == "n" ]; then
+    echo "Not a valid user."
+    exit
 fi
+
+sudo pkill -u $1 && sudo userdel -rf $1
+
+echo "User processes killed and user deleted."
+
+
+
 
