@@ -1,1 +1,4 @@
-sudo pkill -u username && sudo userdel -rf username
+#!/bin/bash
+
+mapfile -t my_array < <( awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd )
+declare -p my_array
